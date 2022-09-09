@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,8 +13,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { RegisterComponent } from './register/register.component';
+import { ButtonModule } from 'primeng/button';
+import {InputMaskModule} from 'primeng/inputmask';
 
-
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +26,7 @@ import { RegisterComponent } from './register/register.component';
     RegisterComponent
   ],
   imports: [
+    NgxMaskModule.forRoot(maskConfig),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -28,10 +35,18 @@ import { RegisterComponent } from './register/register.component';
     NgbModule,
     BrowserAnimationsModule,
     MatSliderModule,
+    ButtonModule,
+    InputMaskModule
   ],
   providers: [
    
   ],
+
+  
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+
+export class AppModule { 
+
+}

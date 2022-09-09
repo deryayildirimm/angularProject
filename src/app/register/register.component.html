@@ -1,19 +1,51 @@
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <div class="login-container row m-5">
+    <div class="login-container row " >
         <div class="row col-6 m-5  ">
         </div>
 
-        <div class="row align-items-center col-4 m-4 p-4 ">
+        <div  class="row align-items-center col-4 p-2 ">
 
             <form [formGroup]="angForm">
 
-                <div class="p-3">
-                    <h1>Register</h1>
+                <div class="p-1" style="margin-bottom: -10px;" >
+                    <h1 >Register</h1>
                 </div>
 
                 <div class="form-group row m-3">
                     <div class="p-2">
-                        <input type="email" id="mail" type="text" formControlName="mail">
+                        <input id="firstName" type="text" formControlName="firstName" [(ngModel)]="firstName">
+                        <label>Firstname</label>
+                        <div class="border1"></div>
+                    </div>
+                </div>
+
+                <div class="form-group row m-3">
+                    <div class="p-2">
+                        <input id="lastName" type="text" formControlName="lastName" [(ngModel)]="lastName">
+                        <label>Lastname</label>
+                        <div class="border1"></div>
+                    </div>
+                </div>
+
+                <div class="form-group row m-3">
+                    <div class="p-2">
+                        <input type="text" id="phone" formControlName="phone" [(ngModel)]="phone" prefix="+9"
+                            mask="(000) 000-00-00" [validation]="true">
+                        <label>Phone</label>
+                        <div class="border1"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <small class="text-danger m-4" severity="error" *ngIf=" angForm.get('phone').hasError('pattern') ">
+                        Invalid phone number
+                    </small>
+                </div>
+
+
+                <div class="form-group row m-3">
+                    <div class="p-2">
+                        <input type="email" id="mail" formControlName="mail" [(ngModel)]="mail">
                         <label>Email</label>
                         <div class="border1"></div>
                     </div>
@@ -21,27 +53,43 @@
 
                 <div class="form-group row m-3">
                     <div class="p-2">
-                        <input type="password" formControlName="password" id="password">
+                        <input type="password" formControlName="password" id="password" [(ngModel)]="password">
                         <label>Password</label>
                         <div class="border2"></div>
                     </div>
                 </div>
 
+                <div>
+                    <small class="text-danger m-4" severity="error"
+                        *ngIf=" angForm.get('password').hasError('pattern') ">
+                        - At least one lowercase,one uppercase and one number
+                    </small>
+                </div>
 
-              
+
+                <div class="form-group row m-3">
+                    <div class="p-2">
+                        <input type="password" id="cPassword" formControlName="confirmPassword" [pattern]="password"
+                            [(ngModel)]="confirmPassword">
+                        <label>Confirm Password</label>
+                        <div class="border1"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <small class="text-danger m-4" severity="error"
+                        *ngIf=" angForm.get('confirmPassword').hasError('pattern') ">
+                        - Passwords are not match !
+                    </small>
+                </div>
+
+
 
                 <div class="form-group row m-3 p-2">
-                    <button type="button" class="btn  btn-sm btn-block p-2">Sign
-                        in</button>
+                    <button type="button" class="btn btn-sm btn-block p-2"
+                        [disabled]="angForm.invalid">Register</button>
                 </div>
 
-                <div class="form-group row ">
-                    <span class=" p-2" >
-                        Don't have an account?
-                        <a routerLink="/register-component">Register</a>
-                    </span>
-                   
-                </div>
 
             </form>
         </div>

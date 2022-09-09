@@ -1,11 +1,12 @@
+
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
     <div class="login-container row m-5">
-        <div class="row col-6 m-5  ">
+        <div class="row col-6 m-5  " >
         </div>
 
-        <div class="row align-items-center col-4 m-4 p-4 ">
+        <div class="row align-items-center col-4 m-6 p-4 " >
 
-            <form [formGroup]="angForm">
+            <form [formGroup]="angForm" >
 
                 <div class="p-3">
                     <h1>Login</h1>
@@ -13,7 +14,7 @@
 
                 <div class="form-group row m-3">
                     <div class="p-2">
-                        <input type="email" id="mail" type="text" formControlName="mail">
+                        <input type="email" id="mail" formControlName="mail" [(ngModel)]="mail">
                         <label>Email</label>
                         <div class="border1"></div>
                     </div>
@@ -21,34 +22,42 @@
 
                 <div class="form-group row m-3">
                     <div class="p-2">
-                        <input type="password" formControlName="password" id="password">
+                        <input type="password" formControlName="password" id="password" [(ngModel)]="password"
+                         >
                         <label>Password</label>
                         <div class="border2"></div>
                     </div>
                 </div>
 
 
+                <div  class="form-group row m-3">
+                    <small class="text-danger" severity="error"
+                     *ngIf=" angForm.get('password').hasError('pattern') ">
+                      - At least one lowercase
+                      - At least one uppercase or one number
+                      - 6-20 characters  
+                    </small>
+                </div>
+                
                 <div class=" m-3 p-2">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="gridCheck1">
-                        <label class="form-check-label" for="gridCheck1">
-                            Remember me
-                        </label>
+                        <label class="form-check-label" for="gridCheck1"> Remember me</label>
                     </div>
 
                 </div>
 
                 <div class="form-group row m-3 p-2">
-                    <button type="button" class="btn  btn-sm btn-block p-2">Sign
+                    <button type="submit"  class="btn btn-sm btn-block p-2" [disabled]="angForm.invalid">Sign
                         in</button>
                 </div>
 
                 <div class="form-group row ">
-                    <span class=" p-2" >
+                    <span class=" p-2">
                         Don't have an account?
-                        <a routerLink="/register-component">Register</a>
+                        <a routerLink="/register-component" style="color: #6770ba; font-style: italic;">Register</a>
                     </span>
-                   
+
                 </div>
 
             </form>

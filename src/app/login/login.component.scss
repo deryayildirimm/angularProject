@@ -18,7 +18,7 @@ h1{
   height: 40px;
   outline: none;
   color: #212121;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
   background: none;
   border: none;
@@ -40,7 +40,7 @@ h1{
 }
 
  .form-group input:focus + label {
-  margin-top: -30px;
+  margin-top: -20px;
   -webkit-transform: scale(.8);
   -moz-transform: scale(.8);
     -o-transform: scale(.8);
@@ -112,5 +112,6 @@ h1{
 .form-group button:active {
   position: relative;
   top: -3px;
-  background:  #6770ba;
+  background:#6770ba;
 }
+

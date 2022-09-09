@@ -9,24 +9,42 @@ import { FormBuilder } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  angForm = this.fb.group({
-    mail: ['',
-    [
-      Validators.required,
-      Validators.email
-    ],
-  ],
-    password: ['',
-    [
-      Validators.required
-  ],
-]
-  })
+  angForm: FormGroup;
+
+  firstName : string ;
+  lastName : string ;
+  phone : string ;
+  mail : string ;
+  password : string ;
+  confirmPassword : string ;
 
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.createForm() ;
   }
+
+  regex = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,20}$';
+
+  
+
+  createForm() {
+    this.angForm = this.fb.group({
+        firstName: ['',[Validators.required]],
+        lastName: ['',[Validators.required]],
+        mail: ['',[Validators.required,Validators.email]],
+        password: ['',[
+          Validators.required,
+          Validators.pattern(this.regex)
+        ]],
+       confirmPassword: ['',[Validators.required]],
+       phone: ['',[
+        Validators.required,
+        Validators.pattern("[0-9 ]{10}")
+      ]]
+       
+    });
+}
 
 }
