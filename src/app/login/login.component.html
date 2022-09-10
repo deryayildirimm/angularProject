@@ -14,7 +14,7 @@
 
                 <div class="form-group row m-3">
                     <div class="p-2">
-                        <input type="email" id="mail" formControlName="mail" [(ngModel)]="mail">
+                        <input type="email" id="email" formControlName="email" [(ngModel)]="email" >
                         <label>Email</label>
                         <div class="border1"></div>
                     </div>
@@ -29,10 +29,11 @@
                     </div>
                 </div>
 
+              
 
                 <div  class="form-group row m-3">
                     <small class="text-danger" severity="error"
-                     *ngIf=" angForm.get('password').hasError('pattern') ">
+                     *ngIf=" angForm.get('password')?.hasError('pattern') ">
                       - At least one lowercase
                       - At least one uppercase or one number
                       - 6-20 characters  
@@ -41,7 +42,7 @@
                 
                 <div class=" m-3 p-2">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                        <input class="form-check-input" type="checkbox" id="gridCheck1" (click)="saveLog()">
                         <label class="form-check-label" for="gridCheck1"> Remember me</label>
                     </div>
 

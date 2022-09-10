@@ -15,6 +15,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { RegisterComponent } from './register/register.component';
 import { ButtonModule } from 'primeng/button';
 import {InputMaskModule} from 'primeng/inputmask';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsStoragePluginModule, StorageOption } from '@ngxs/storage-plugin';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -36,7 +38,9 @@ const maskConfig: Partial<IConfig> = {
     BrowserAnimationsModule,
     MatSliderModule,
     ButtonModule,
-    InputMaskModule
+    InputMaskModule,
+    NgxsModule.forRoot([]), 
+    NgxsStoragePluginModule.forRoot()
   ],
   providers: [
    

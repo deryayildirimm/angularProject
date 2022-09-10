@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 //import { TranslateService } from '@ngx-translate/core';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -12,18 +13,19 @@ export class LoginComponent implements OnInit {
 
   angForm !: FormGroup;
 
-  password : string | undefined ;
-  mail: string | undefined;
+  password !: string ;
+  email !: string ;
 
 
-
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+    private service : AuthenticationService) {
 
   }
 
+  
 
   ngOnInit(): void {
-    this.checkLogin();
+    this.checkLogin(); 
 
   }
 
@@ -36,7 +38,7 @@ export class LoginComponent implements OnInit {
   checkLogin() {
 
     this.angForm = this.fb.group({
-      mail: ['',
+      email: ['',
         [
           Validators.required,
           Validators.email
@@ -50,10 +52,14 @@ export class LoginComponent implements OnInit {
       ]
     });
 
+    localStorage.setItem('remember' , JSON.stringify(this.angForm.value)) ;
+
   }
 
-  RememberMe() {
-    console.log("rememberr");
+  
+  saveLog(){
+
+    
   }
 
 
