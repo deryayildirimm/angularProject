@@ -17,6 +17,7 @@ import { ButtonModule } from 'primeng/button';
 import {InputMaskModule} from 'primeng/inputmask';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsStoragePluginModule, StorageOption } from '@ngxs/storage-plugin';
+import { MainComponent } from './main/main.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -25,7 +26,8 @@ const maskConfig: Partial<IConfig> = {
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MainComponent
   ],
   imports: [
     NgxMaskModule.forRoot(maskConfig),

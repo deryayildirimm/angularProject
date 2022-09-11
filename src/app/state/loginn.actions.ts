@@ -1,4 +1,4 @@
-export class LoginnAction {
-  static readonly type = '[Loginn] Add item';
-  constructor(public payload:{mail :string, password :string}) { }
+export class Login {
+  static readonly type = '[Loginn] Login';
+  constructor(public payload:{mail :string, password :string, rememberMe :boolean}) { }
 }

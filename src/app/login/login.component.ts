@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 //import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from '../services/authentication.service';
+import { Select, Store } from '@ngxs/store';
+import { Login } from '../state/loginn.actions';
 
 @Component({
   selector: 'app-login',
@@ -16,13 +18,15 @@ export class LoginComponent implements OnInit {
   password !: string ;
   email !: string ;
 
+  rememberMe !: boolean ;
 
   constructor(private fb: FormBuilder,
-    private service : AuthenticationService) {
+    private service : AuthenticationService,
+    private store:Store
+    ) {
 
   }
 
-  
 
   ngOnInit(): void {
     this.checkLogin(); 
@@ -57,11 +61,17 @@ export class LoginComponent implements OnInit {
   }
 
   
-  saveLog(){
-
-    
+  remember(){
+    this.rememberMe = !this.rememberMe;
   }
 
+  login(){
+    this.store.dispatch( new Login( {
+      mail : this.angForm.get('email')?.value,
+      password: this.angForm.get('password')?.value,
+      rememberMe : this.rememberMe 
+    })).subscribe() ;
+  }
 
 
 }
