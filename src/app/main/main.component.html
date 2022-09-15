@@ -1,1 +1,45 @@
-<p>main works!</p>
+
+<div class="cover-container d-flex p-1 mx-auto flex-column" style="background-color: purple;">
+    <div class="login-container row m-2" style="background-color: yellow;" >
+        <section class="wrapper">
+            <div class="container-fostrap">
+                <div>
+                    <h1 class="heading">
+                        Bootstrap Card Responsive 
+                    </h1>
+                </div>
+                <div class="content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4"  *ngFor="let product of productData?.product">
+                                <div class="card">
+                                    <a class="img-card" href="">
+                                    <img src="https://picsum.photos/200/300" />
+                                  </a>
+                                    <div class="card-content">
+                                        <h4 class="card-title">
+                                            <a href=""> {{product.name}}
+                                          </a>
+                                        </h4>
+                                        <p class="">
+                                            {{product.decription}}
+                                        </p>
+                                    </div>
+                                    <div class="card-read-more">
+                                        <a href="" class="btn btn-link btn-block">
+                                            Read More
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+       
+        </section>
+    </div>
+</div>
+

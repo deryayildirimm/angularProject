@@ -31,8 +31,6 @@
                 </div>
 
 
-              
-
                 <div  class="form-group row m-3">
                     <small class="text-danger" severity="error"
                      *ngIf=" angForm.get('password')?.hasError('pattern') ">
@@ -51,7 +49,7 @@
                 </div>
 
                 <div class="form-group row m-3 p-2">
-                    <button type="submit"  class="btn btn-sm btn-block p-2" [disabled]="angForm.invalid">Sign
+                    <button type="submit"  class="btn btn-sm btn-block p-2" [disabled]="angForm.invalid" (click) ="login()">Sign
                         in</button>
                 </div>
 

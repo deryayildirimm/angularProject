@@ -5,7 +5,7 @@ import { FormBuilder } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
 import { Select, Store } from '@ngxs/store';
 import { Login } from '../state/loginn.actions';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private service : AuthenticationService,
-    private store:Store
+    private store:Store,
+    private router : Router
     ) {
 
   }
@@ -66,11 +67,22 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    /*
     this.store.dispatch( new Login( {
       mail : this.angForm.get('email')?.value,
       password: this.angForm.get('password')?.value,
       rememberMe : this.rememberMe 
     })).subscribe() ;
+    */
+
+    this.router.navigate(['main-component'])
+    .then(nav => {
+      console.log(nav); // true if navigation is successful
+    }, err => {
+      console.log(err) // when there's an error
+    });
+
+    
   }
 
 
